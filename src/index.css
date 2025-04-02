@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 17%;  /* #2C2C2C */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 17%;  /* #2C2C2C */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;  /* #2C2C2C */
+
+    --primary: 351 92% 59%;  /* #F7374F */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 335 47% 36%;  /* #88304E */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 316 42% 24%;  /* #522546 at 10% opacity */
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 316 42% 24%;  /* #522546 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 351 92% 59%;  /* #F7374F */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 17%;  /* #2C2C2C */
+    --sidebar-primary: 351 92% 59%;  /* #F7374F */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 335 47% 36%;  /* #88304E */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 351 92% 59%;  /* #F7374F */
+  }
+
+  .dark {
+    --background: 0 0% 17%;  /* #2C2C2C */
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 17%;  /* #2C2C2C */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 0 0% 17%;  /* #2C2C2C */
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 351 92% 59%;  /* #F7374F */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 335 47% 36%;  /* #88304E */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 316 42% 24%;  /* #522546 */
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 316 42% 24%;  /* #522546 */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 316 42% 24%;  /* #522546 */
+    --input: 316 42% 24%;  /* #522546 */
+    --ring: 351 92% 59%;  /* #F7374F */
+    
+    --sidebar-background: 0 0% 17%;  /* #2C2C2C */
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 351 92% 59%;  /* #F7374F */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 335 47% 36%;  /* #88304E */
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 316 42% 24%;  /* #522546 */
+    --sidebar-ring: 351 92% 59%;  /* #F7374F */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+}
+
+@layer components {
+  .gradient-heading {
+    @apply bg-gradient-to-r from-custom-purple-dark to-custom-red bg-clip-text text-transparent;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards; /* Reduced from 0.5s to 0.3s */
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards; /* Reduced from 0.6s to 0.4s */
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out forwards; /* Reduced from 0.6s to 0.4s */
+  }
+  
+  .animate-slide-left {
+    animation: slideLeft 0.4s ease-out forwards; /* Reduced from 0.6s to 0.4s */
+  }
+  
+  .animate-slide-right {
+    animation: slideRight 0.4s ease-out forwards; /* Reduced from 0.6s to 0.4s */
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(247,55,79,0.5)];
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); /* Added slight initial transform for smoother effect */
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px); /* Increased initial translate for more noticeable effect */
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
